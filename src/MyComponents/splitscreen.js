@@ -9,7 +9,7 @@ const LeftSection = () => {
 };
 
 const RightSection = () => {
-  return <div className="right-section">70% Width</div>;
+  return <div className="right-section"></div>;
 };
 
 const VerticalLine = () => {
