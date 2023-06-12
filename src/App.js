@@ -1,9 +1,9 @@
-import React from 'react';
-import Navbar from './MyComponents/Navbar';
-import './App.css';
-import { LeftSection, RightSection, VerticalLine } from './MyComponents/splitscreen';
-
-function App() {
+import React from 'react';              //Importing React 
+import Navbar from './MyComponents/Navbar';           //Importing Navbar
+import './App.css';           //Importing css file
+import { LeftSection, RightSection, VerticalLine,LastSection } from './MyComponents/splitscreen';     //Importing various sections
+import Footer from './MyComponents/footer';
+function App() {              //funtion named app
   return (
     <>
     <div>
@@ -13,7 +13,13 @@ function App() {
     <div className="app">
       <LeftSection />
       <VerticalLine />
-      <RightSection />
+      <LastSection />
+      <VerticalLine />
+       <RightSection />
+       
+    </div>
+    <div>
+    <Footer/>
     </div>
     </>
   );
