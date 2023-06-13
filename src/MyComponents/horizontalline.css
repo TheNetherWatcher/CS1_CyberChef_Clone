@@ -1,0 +1,15 @@
+.right-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  flex: 1;
+}
+
+.horizontal-line {
+  border: none;
+  border-top: 1px solid #ccc; /* Change color as desired */
+  margin: 10px 0; /* Adjust margin as needed */
+  width: 100%; /* Set width to 100% to span the entire container */
+}
