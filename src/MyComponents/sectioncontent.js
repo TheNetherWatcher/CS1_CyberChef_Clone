@@ -9,7 +9,8 @@ const SectionContent = () => {
     console.log("On change")
     setText(event.target.value)
   }
-
+  let x = text
+  
   return (
     <>
     <div className="section-content">
@@ -18,7 +19,7 @@ const SectionContent = () => {
     </div>
     <div className="section-content">
     <span className="span-area my-2">OUTPUT</span>
-    <textarea className="text-area" value={"see here"}></textarea>
+    <textarea className="text-area" value={x}></textarea>
     </div>
     </>
   );
