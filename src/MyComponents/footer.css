@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 .footer {
     background-color: black;
     color: white;
@@ -29,4 +30,37 @@
     color: white;
     text-decoration: none;
   }
+=======
+.footer {
+    background-color: black;
+    color: white;
+    padding: 20px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-right: 15px;
+  }
+  
+  ul li:last-child {
+    margin-right: 0;
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+  }
+>>>>>>> Stashed changes
   

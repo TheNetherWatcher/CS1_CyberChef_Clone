@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 .section-content {
     display: flex;
     flex-direction: column;
@@ -13,4 +14,21 @@
 
 .text-area {
     height: 350px;
+=======
+.section-content {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.span-area {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.text-area {
+    height: 350px;
+>>>>>>> Stashed changes
 }
