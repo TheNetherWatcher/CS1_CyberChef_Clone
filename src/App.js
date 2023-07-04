@@ -1,4 +1,5 @@
 import React, {useState} from 'react';              
+import './App.css'
 import './MyComponents/buttonsection.css'
 import './MyComponents/sectioncontent.css'
 import Navbar from './MyComponents/Navbar';           //Importing Navbar
@@ -32,7 +33,10 @@ function App() {
        return char.charCodeAt(0).toString(2);
     }).join(' ');
     setOutstring(res)
- };
+  }
+  const handleURL = () => {
+    setOutstring(encodeURI(instring))
+  }
   return (
     <>
     <div>
@@ -47,7 +51,7 @@ function App() {
           <button className="custom-button" onClick={handleSHA256}>SHA-256</button>
           <button className="custom-button">RSA</button>
           <button className="custom-button" onClick={handleBase64}>Base64</button>
-          <button className="custom-button">URL encoding</button>
+          <button className="custom-button" onClick={handleURL}>URL encoding</button>
           <button className="custom-button">HTML encoding</button>
           <button className="custom-button">Hexadecimal</button>
           <button className="custom-button" onClick={handleBinary}>Binary</button>
