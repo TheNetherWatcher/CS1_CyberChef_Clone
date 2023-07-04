@@ -1,61 +1,38 @@
-<<<<<<< Updated upstream
-import React from 'react';              //Importing React 
-import Navbar from './MyComponents/Navbar';           //Importing Navbar
-import './App.css';           //Importing css file
-import { LeftSection, RightSection, VerticalLine,LastSection } from './MyComponents/splitscreen';     //Importing various sections
-import Footer from './MyComponents/footer';
-function App() {              //funtion named app
-  return (
-    <>
-    <div>
-      <Navbar/>
-    </div>
-    <div className="app">
-      <LeftSection />
-      <VerticalLine />
-      <LastSection />
-      <VerticalLine />
-      <RightSection /> 
-    </div>
-    <div>
-    <Footer/>
-    </div>
-    </>
-  );
-}
-
-
-
-export default App;
-
-=======
-import React, {useState} from 'react';              //Importing React 
-import './App.css';           //Importing css file
-import { LastSection } from './MyComponents/splitscreen';     
-import './App.css'
+import React, {useState} from 'react';              
 import './MyComponents/buttonsection.css'
 import './MyComponents/sectioncontent.css'
 import Navbar from './MyComponents/Navbar';           //Importing Navbar
 import CryptoJS from 'crypto-js';
 
 function App() {  
-  const [text, setText] = useState("");
-  const [value, setValue] = useState("");
+  const [instring, setInstring] = useState("");
+  const [outstring, setOutstring] = useState("");
   const handleOnChange = (event) => {
-    setText(event.target.value)
+    setInstring(event.target.value)
+    setOutstring(event.target.value)
   }
   const handleMD5 = () => {
-    setValue(CryptoJS.MD5(text))
+    setOutstring(CryptoJS.MD5(instring))
   }
   const handleSHA1 = () => {
-    setValue(CryptoJS.SHA1(text))
+    setOutstring(CryptoJS.SHA1(instring))
   }
   const handleSHA224 = () => {
-    setValue(CryptoJS.SHA224(text))
+    setOutstring(CryptoJS.SHA224(instring))
   }
   const handleSHA256 = () => {
-    setValue(CryptoJS.SHA256(text))
+    setOutstring(CryptoJS.SHA256(instring))
   }
+  const handleBase64 = () => {
+    setOutstring(btoa(instring))
+  }
+  const handleBinary = () => {
+    let res = '';
+    res = instring.split('').map(char => {
+       return char.charCodeAt(0).toString(2);
+    }).join(' ');
+    setOutstring(res)
+ };
   return (
     <>
     <div>
@@ -63,33 +40,35 @@ function App() {
     </div>
     <div className="app">
       <div className='left-section'>
-      <div className="button-group">
-        <button className="custom-button" onClick={handleMD5}>MD5</button>
-        <button className="custom-button" onClick={handleSHA1}>SHA-1</button>
-        <button className="custom-button" onClick={handleSHA224}>SHA-224</button>
-        <button className="custom-button" onClick={handleSHA256}>SHA-256</button>
-        <button className="custom-button">RSA</button>
-        <button className="custom-button">Base64</button>
-        <button className="custom-button">URL encoding</button>
-        <button className="custom-button">HTML encoding</button>
-        <button className="custom-button">Hexadecimal</button>
-        <button className="custom-button">Binary</button>
-        <button className="custom-button">Lorem</button>
-        <button className="custom-button">Ipsum</button>
-        <button className="custom-button">Lorem</button>
-        <button className="custom-button">Ipsum</button>
-        <button className="custom-button">Lorem</button>
+        <div className="button-group">
+          <button className="custom-button" onClick={handleMD5}>MD5</button>
+          <button className="custom-button" onClick={handleSHA1}>SHA-1</button>
+          <button className="custom-button" onClick={handleSHA224}>SHA-224</button>
+          <button className="custom-button" onClick={handleSHA256}>SHA-256</button>
+          <button className="custom-button">RSA</button>
+          <button className="custom-button" onClick={handleBase64}>Base64</button>
+          <button className="custom-button">URL encoding</button>
+          <button className="custom-button">HTML encoding</button>
+          <button className="custom-button">Hexadecimal</button>
+          <button className="custom-button" onClick={handleBinary}>Binary</button>
+          <button className="custom-button">Lorem</button>
+          <button className="custom-button">Ipsum</button>
+          <button className="custom-button">Lorem</button>
+          <button className="custom-button">Ipsum</button>
+          <button className="custom-button">Lorem</button>
+        </div>
       </div>
+      <div className='middle-section'>
+
       </div>
-      <LastSection />
       <div className='right-section'>
       <div className="section-content">
-        <span className="span-area my-2">INPUT</span>
-        <textarea className="text-area" value={text} onChange={handleOnChange}></textarea>
+        <span className="span-area my-2">Decrypted Message</span>
+        <textarea className="text-area" value={instring} onChange={handleOnChange}></textarea>
         </div>
         <div className="section-content">
-        <span className="span-area my-2">OUTPUT</span>
-        <textarea className="text-area" value={value}></textarea>
+        <span className="span-area my-2">Encrypted Message</span>
+        <textarea className="text-area" value={outstring} onChange={handleOnChange}></textarea>
       </div>  
       </div> 
     </div>
@@ -98,4 +77,3 @@ function App() {
 }
 
 export default App;
->>>>>>> Stashed changes
