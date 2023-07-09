@@ -1,34 +1,24 @@
-<<<<<<< Updated upstream
 .section-content {
     display: flex;
     flex-direction: column;
-
+    /* border-style: solid;
+    border-radius: 10px;
+    border-color: white; */
 }
 
 .span-area {
-    background-color: black;
+    background-color: #131313;
     color: white;
     text-align: center;
     padding: 5px;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: rgb(50, 105, 44);
+    font-size: 20px;
 }
 
 .text-area {
     height: 350px;
-=======
-.section-content {
-    display: flex;
-    flex-direction: column;
-
-}
-
-.span-area {
-    background-color: black;
+    background-color: #131313;
     color: white;
-    text-align: center;
-    padding: 5px;
-}
-
-.text-area {
-    height: 350px;
->>>>>>> Stashed changes
 }
