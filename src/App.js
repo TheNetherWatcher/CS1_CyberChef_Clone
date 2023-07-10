@@ -2,15 +2,17 @@ import React,{useState} from 'react';
 import { useDencrypt } from 'use-dencrypt-effect';
 import CryptoJS from 'crypto-js';
 import './App.css'
+import './My Components/sectioncontent.css'
+import Navbar from './My Components/Navbar';
+import Button from './My Components/Button';
 
 function App() {  
   const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
   const nums = "0123456789";
   const special = "~`!@#$%^&*()_-+=/*{}[];:'<>,."
-  const alphabet =  latin + nums +special;
+  const alphabet =  latin + nums + special;
   const [instring, setInstring] = useState("");
   const [outstring, setOutstring] = useState("");    
-  const [value, setValue] = useDencrypt("ByteBaker",{chars : alphabet});
   const [title1, setTitle1] = useDencrypt("Input String",{chars : alphabet});  
   const [title2, setTitle2] = useDencrypt("Output String",{chars : alphabet});
   const [algo, setAlgo] = useState("This is where you will see the algorithm information");
@@ -92,7 +94,7 @@ function App() {
       hex += hexValue.padStart(2, '0');
     }
     setOutstring(hex)
-    let x=<div><p className='heading'>Hexadecimal Conversion conversion algorithm</p>
+    let x=<div><p className='heading'>Hexadecimal Conversion algorithm</p>
             <div className='description'>
               <p>This is the description of the Hexadecimal Conversion conversion algorithm</p>
             </div>
@@ -106,33 +108,36 @@ function App() {
             </div>
           </div>
     setAlgo(x)
+    let result = ""
+    for (let i = 0; i < instring.length; i++) {
+      let char=instring[i];
+      if (char.toUpperCase(instring[i])) {
+        let ch = String.fromCharCode((char.charCodeAt(0) + rotnum - 65)%26 + 65);
+        result+=ch;
+      }      
+      else{
+        let ch = String.fromCharCode((char.charCodeAt(0) + rotnum - 97)%26 + 97);
+        result+=ch;
+      }
+    }
+    setOutstring(result)
   }
   return (
     <>
-    <div>
-    <nav className="navbar1">
-      <div className="navbar-title">
-        <span className="navbar-name" onClick={()=>setValue("ByteBaker")}>{value}</span>
-      </div>
-    </nav>
-    </div>
+    <Navbar />
     <div className="app">
       <div className="left-section">
         <div className="button-group">
-          <button className="custom-button" onClick={handleMD5}>MD5</button>
-          <button className="custom-button" onClick={handleSHA1}>SHA-1</button>
-          <button className="custom-button" onClick={handleSHA224}>SHA-224</button>
-          <button className="custom-button" onClick={handleSHA256}>SHA-256</button>
-          <button className="custom-button">RSA</button>
-          <button className="custom-button" onClick={handleBase64}>Base64</button>
-          <button className="custom-button" onClick={handleURL}>URL encoding</button>
-          <button className="custom-button">HTML encoding</button>
-          <button className="custom-button" onClick={handleHex}>Hexadecimal</button>
-          <button className="custom-button" onClick={handleBinary}>Binary</button>
-          <button className="custom-button" onClick={handleROT}>ROT-{rotnum}</button>
-          <button className="custom-button">Ipsum</button>
-          <button className="custom-button">Lorem</button>
-          <button className="custom-button">Ipsum</button>
+          <Button algoname="MD5" func={handleMD5}/>
+          <Button algoname="SHA-1" func={handleSHA1}/>
+          <Button algoname="SHA-224" func={handleSHA224}/>
+          <Button algoname="SHA-256" func={handleSHA256}/>
+          <Button algoname="RSA"/>
+          <Button algoname="Base64" func={handleBase64} />
+          <Button algoname="URL conversion" func={handleURL} />
+          <Button algoname="Hexadecimal Conversion" func={handleHex} />
+          <Button algoname="Binary conversion" func={handleBinary} />
+          <Button algoname={"ROT"} func={handleROT} />
         </div>
       </div>
       <div className="middle-section">

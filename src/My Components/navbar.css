@@ -1,0 +1,25 @@
+.navbar1 {
+    background-color:#131313;
+    padding: 10px;
+    border-radius: 5px;
+    border-color: green;
+    border-style: groove;
+  }
+  
+  .navbar-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+  }
+  
+  .logo {
+    width: 60px; /* Adjust the width to increase/decrease the image size */
+    height: 60px; /* Adjust the height to increase/decrease the image size */
+    margin-right: 10px;
+  }
+  
+  .navbar-name {
+    color: white;
+    font-size: 40px; /* Adjust the font-size to increase/decrease the text size */
+  }
