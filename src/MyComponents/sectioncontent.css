@@ -1,0 +1,32 @@
+.section-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: -7px;
+    margin-bottom: 0px;
+
+}
+
+.span-area {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px;
+   
+}
+
+.text-area {
+    height: 340px;
+    margin-top:-5px;
+    resize: none;
+    margin-bottom:4px;
+}
+.span-area my-2{
+    margin-top: -2px;
+    margin-bottom: -2px;
+}
+.text-area-2{
+    height: 720px;
+    margin-top:-5px;
+    margin-bottom:4px; 
+    resize: none;
+}

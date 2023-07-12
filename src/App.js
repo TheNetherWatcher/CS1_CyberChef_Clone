@@ -1,20 +1,18 @@
-import React,{useState} from 'react'; 
-import { useDencrypt } from 'use-dencrypt-effect';
-import CryptoJS from 'crypto-js';
+import React, {useState} from 'react';              //Importing React 
+import Navbar from './MyComponents/Navbar';           //Importing Navbar
+import './App.css';           //Importing css file
+import { VerticalLine} from './MyComponents/splitscreen';     //Importing various sections
+import Footer from './MyComponents/footer';
 import './App.css'
-import './My Components/sectioncontent.css'
-import Navbar from './My Components/Navbar';
-import Button from './My Components/Button';
+import './MyComponents/buttonsection.css'
+import './MyComponents/sectioncontent.css'
+import './MyComponents/sectioncontent2.css'
+import CryptoJS from 'crypto-js';
+
 
 function App() {  
-  const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-  const nums = "0123456789";
-  const special = "~`!@#$%^&*()_-+=/*{}[];:'<>,."
-  const alphabet =  latin + nums + special;
   const [instring, setInstring] = useState("");
   const [outstring, setOutstring] = useState("");    
-  const [title1, setTitle1] = useDencrypt("Input String",{chars : alphabet});  
-  const [title2, setTitle2] = useDencrypt("Output String",{chars : alphabet});
   const [algo, setAlgo] = useState("This is where you will see the algorithm information");
   const [rotnum, setRotnum] = useState(13);
   const handleOnChange = (event) => {
@@ -22,8 +20,9 @@ function App() {
     setOutstring(event.target.value)
   }
   const handleMD5 = () => {
-    let x=<div><p className='heading'>MD5 conversion algorithm</p>
-            <p className='description'>This is the description of the MD5 conversion algorithm</p>
+    let x=<div><p className='heading'>MD5 algorithm</p>
+            <p className='description'>MD5(Message Digest Method 5) is a cryptographic hashing algorithm used to generate a 128-bit digest from a string of any length. It represents the digest as 32 digit hexadecimal numbers.</p>
+            
           </div>
     setOutstring(CryptoJS.MD5(instring))
     setAlgo(x)
@@ -124,35 +123,54 @@ function App() {
   }
   return (
     <>
-    <Navbar />
+    <div>
+      <Navbar/>
+    </div>
     <div className="app">
-      <div className="left-section">
-        <div className="button-group">
-          <Button algoname="MD5" func={handleMD5}/>
-          <Button algoname="SHA-1" func={handleSHA1}/>
-          <Button algoname="SHA-224" func={handleSHA224}/>
-          <Button algoname="SHA-256" func={handleSHA256}/>
-          <Button algoname="RSA"/>
-          <Button algoname="Base64" func={handleBase64} />
-          <Button algoname="URL conversion" func={handleURL} />
-          <Button algoname="Hexadecimal Conversion" func={handleHex} />
-          <Button algoname="Binary conversion" func={handleBinary} />
-          <Button algoname={"ROT"} func={handleROT} />
+      <div className='left-section' >
+      <div className="section-content-2">
+    <span className="span-area my-2">OPERATIONS</span>
+      
+    </div>
+      <div className="button-group">
+     
+        <button className="custom-button" onClick={handleMD5}>MD5</button>
+        <button className="custom-button" onClick={handleSHA1}>SHA-1</button>
+        <button className="custom-button" onClick={handleSHA224}>SHA-224</button>
+        <button className="custom-button" onClick={handleSHA256}>SHA-256</button>
+        <button className="custom-button" onClick={handleBase64}>Base64</button>
+        <button className="custom-button" onClick={handleURL}>URL encoding</button>
+        <button className="custom-button" onClick={handleHex}>Hexadecimal</button>
+        <button className="custom-button" onClick={handleBinary}>Binary</button>
+        <button className="custom-button" onClick={handleROT}>ROT13</button>
+        <button className="custom-button">Ipsum</button>
+        <button className="custom-button">Lorem</button>
+        <button className="custom-button">Ipsum</button>
+        <button className="custom-button">Lorem</button>
+      </div>
+      </div>
+      <VerticalLine />
+      <div className='last-section'>
+      <div className="section-content-2">
+    <span className="span-area my-2">More About It</span>
+    {/* <textarea className="text-area-2" >{algo}</textarea> */}
+    {algo}
+    </div>
+    </div>
+      <VerticalLine />
+      <div className='right-section'>
+      <div className="section-content">
+        <span className="span-area my-2">Input String</span>
+        <textarea className="text-area" value={instring} onChange={handleOnChange}></textarea>
         </div>
-      </div>
-      <div className="middle-section">
-        <h1>{algo}</h1>
-      </div>
-      <div className="right-section">
         <div className="section-content">
-          <span className="span-area my-2" onClick={() => setTitle1("Input String")}>{title1}</span>
-          <textarea className="text-area" value={instring} onChange={handleOnChange}></textarea>
-        </div>
-          <div className="section-content">
-          <span className="span-area my-2" onClick={() => setTitle2("Output String")}>{title2}</span>
-          <textarea className="text-area" value= {outstring} onChange={handleOnChange}></textarea>
-        </div>  
+        <span className="span-area my-2">Output String</span>
+        <textarea className="text-area" value={outstring} onChange={handleOnChange}></textarea>
+      </div>  
       </div> 
+    </div>
+    <div>
+    <Footer/>
     </div>
     </>
   );
