@@ -95,7 +95,18 @@ function App() {
       const hexValue = charCode.toString(16);
       hex += hexValue.padStart(2, '0');
     }
-    setOutstring(hex)
+    let ascii=""
+    for (let i = 0; i < instring.length; i+=2) {
+      let part = instring.substring(i,i+2);
+      let ch=String.fromCharCode(parseInt(part,16));
+      ascii=ascii+ch;
+    }
+    if(action===0){
+      setOutstring(hex)
+    }
+    else{
+      setOutstring(ascii)
+    }
   }
   const handleROT = () => {
     setAlgo(9)
