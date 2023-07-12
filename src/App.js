@@ -8,84 +8,87 @@ import './MyComponents/buttonsection.css'
 import './MyComponents/sectioncontent.css'
 import './MyComponents/sectioncontent2.css'
 import CryptoJS from 'crypto-js';
-
+import SectionContent from './MyComponents/sectioncontent';
 
 function App() {  
   const [instring, setInstring] = useState("");
   const [outstring, setOutstring] = useState("");    
-  const [algo, setAlgo] = useState("This is where you will see the algorithm information");
+  const [algo, setAlgo] = useState(0);
   const [rotnum, setRotnum] = useState(13);
+  const [action, setAction] = useState(1);
   const handleOnChange = (event) => {
     setInstring(event.target.value)
-    setOutstring(event.target.value)
+    // setOutstring(event.target.value)
   }
   const handleMD5 = () => {
-    let x=<div><p className='heading'>MD5 algorithm</p>
-            <p className='description'>MD5(Message Digest Method 5) is a cryptographic hashing algorithm used to generate a 128-bit digest from a string of any length. It represents the digest as 32 digit hexadecimal numbers.</p>
-            
-          </div>
-    setOutstring(CryptoJS.MD5(instring))
-    setAlgo(x)
+    setAlgo(1)
+    if(action === 0){
+      setOutstring(CryptoJS.MD5(instring))
+    }
+    else{
+      setOutstring(instring)
+    }
   }
   const handleSHA1 = () => {
-    let x=<div><p className='heading'>SHA-1 conversion algorithm</p>
-            <div className='description'>
-              <p>This is the description of the SHA-1 conversion algorithm</p>
-            </div>
-          </div>
-    setOutstring(CryptoJS.SHA1(instring))
-    setAlgo(x)
+    setAlgo(2)
+    if(action === 0){
+      setOutstring(CryptoJS.SHA1(instring))
+    }
+    else{
+      setOutstring(instring)
+    }
   }
   const handleSHA224 = () => {
-    let x=<div><p className='heading'>SHA-224 conversion algorithm</p>
-            <div className='description'>
-              <p>This is the description of the SHA-224 conversion algorithm</p>
-            </div>
-          </div>
-    setAlgo(x)
-    setOutstring(CryptoJS.SHA224(instring))
+    setAlgo(3)
+    if(action === 0){
+      setOutstring(CryptoJS.SHA224(instring))
+    }
+    else{
+      setOutstring(instring)
+    }
   }
   const handleSHA256 = () => {
-    let x=<div><p className='heading'>SHA-256 conversion algorithm</p>
-            <div className='description'>
-              <p>This is the description of the SHA-256 conversion algorithm</p>
-            </div>
-          </div>
-    setAlgo(x)
-    setOutstring(CryptoJS.SHA256(instring))
+    setAlgo(4)
+    if(action === 0){
+      setOutstring(CryptoJS.SHA256(instring))
+    }
+    else{
+      setOutstring(instring)
+    }
   }
   const handleBase64 = () => {
-    let x=<div><p className='heading'>Base64 conversion algorithm</p>
-            <div className='description'>
-              <p>This is the description of the Base64 conversion algorithm</p>
-            </div>
-          </div>
-    setAlgo(x)
-    setOutstring(btoa(instring))
+    setAlgo(5)
+    if(action === 0){
+      setOutstring(btoa(instring))
+    }
+    else{
+      setOutstring(atob(instring))
+    }
   }
   const handleBinary = () => {
-    let x=<div><p className='heading'>Binary Conversion</p>
-            <div className='description'>
-              <p>This is the description of the Binary conversion algorithm</p>
-            </div>
-          </div>
-    setAlgo(x)
+    setAlgo(6)
     let res = '';
     res = instring.split('').map(char => {
       return char.charCodeAt(0).toString(2);
     }).join(' ');
-    setOutstring(res)
+    if(action === 0){
+      setOutstring(res)
+    }
+    else{
+      setOutstring(instring)
+    }
   }
   const handleURL = () => {
-    let x=<div><p className='heading'>URL conversion algorithm</p>
-            <div className='description'>
-              <p>This is the description of the URL conversion algorithm</p>
-            </div>
-          </div>
-    setAlgo(x)
-    setOutstring(encodeURI(instring))
+    setAlgo(7)
+    if(action === 0){
+      setOutstring(encodeURI(instring))
+    }
+    else{
+      setOutstring(decodeURI(instring))
+    }
   }
   const handleHex = () => {
+    setAlgo(8)
     let hex = '';
     for (let i = 0; i < instring.length; i++) {
       const charCode = instring.charCodeAt(i);
@@ -93,20 +96,9 @@ function App() {
       hex += hexValue.padStart(2, '0');
     }
     setOutstring(hex)
-    let x=<div><p className='heading'>Hexadecimal Conversion algorithm</p>
-            <div className='description'>
-              <p>This is the description of the Hexadecimal Conversion conversion algorithm</p>
-            </div>
-          </div>
-    setAlgo(x)
   }
   const handleROT = () => {
-    let x=<div><p className='heading'>ROT-{rotnum} conversion algorithm</p>
-            <div className='description'>
-              <p>This is the description of the ROT-{rotnum} conversion algorithm</p>
-            </div>
-          </div>
-    setAlgo(x)
+    setAlgo(9)
     let result = ""
     for (let i = 0; i < instring.length; i++) {
       let char=instring[i];
@@ -148,15 +140,16 @@ function App() {
         <button className="custom-button">Ipsum</button>
         <button className="custom-button">Lorem</button>
       </div>
+      <button onClick={() => setAction(0)}>Encrypt</button>
+      <button onClick={() => setAction(1)}>Decrypt</button>
       </div>
       <VerticalLine />
       <div className='last-section'>
       <div className="section-content-2">
-    <span className="span-area my-2">More About It</span>
-    {/* <textarea className="text-area-2" >{algo}</textarea> */}
-    {algo}
-    </div>
-    </div>
+      <span className="span-area my-2">More About It</span>
+      <SectionContent value={algo}/>
+      </div>
+      </div>
       <VerticalLine />
       <div className='right-section'>
       <div className="section-content">
