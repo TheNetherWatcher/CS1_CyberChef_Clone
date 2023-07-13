@@ -5,7 +5,11 @@ const SectionContent = (props) => {
   let x,y=props.value;
   if(y===0)
   {
-    x=<h1>Here, you will see the description of the algorithm</h1>
+    x=<div>
+        <h1>Here, you will see the description of the algorithm.</h1>
+        <p>First, click on the action that you want to perform(i.e, Encrypt/Decrypt) and then select the conversion algorithm.</p>
+        <p>Note: You can use the conversion(i.e., Encryption/Decryption) to any algorithm as many times as you want but to change the conversion(from encryption to decryption, or from decryption to encryption) you will have to first click that button and then click the button of the algorithm that you want to convert into.</p>
+      </div>
   }
   if(y===1)
   {
@@ -27,7 +31,7 @@ const SectionContent = (props) => {
         <p>This is the description of the SHA-224 conversion algorithm</p>
       </div>
   }
-  if(y==4)
+  if(y===4)
   {
     x=<div>
         <h1>SHA-256 conversion algorithm</h1>
